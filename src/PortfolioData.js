@@ -12,6 +12,7 @@ export const navigation = [
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Resume', href: '#resume' },
   { name: 'Education', href: '#education' },
   { name: 'Awards', href: '#awards' },
   { name: 'Contact', href: '#contact' },
