@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Users, Target, Shield, CheckCircle, TrendingUp, Zap, Database, Brain } from 'lucide-react';
 
 const Project8 = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-50">
       <div className="bg-white/80 backdrop-blur-lg border-b border-purple-100 sticky top-0 z-50">
