@@ -12,6 +12,7 @@ import Project7 from './pages/Project7'
 import Project8 from './pages/Project8'
 import Project9 from './pages/Project9'
 import Project10 from './pages/Project10'
+import Project11 from './pages/Project11'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/project/8" element={<Project8 />} />
         <Route path="/project/9" element={<Project9 />} />
         <Route path="/project/10" element={<Project10 />} />
+        <Route path="/project/11" element={<Project11 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
