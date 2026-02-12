@@ -12,11 +12,19 @@ import {
   navigation, impactMetrics, allProjects, experience, education,
   additionalCourses, awards, publications, skills, additionalSkills
 } from './PortfolioData';
+import BlogSection from './components/BlogSection';
+import NewsletterSignup from './components/NewsletterSignup';
+import AuthModal from './components/AuthModal';
+import AdminDashboard from './components/AdminDashboard';
+import { useAuth } from './hooks/useApi';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showAdminDashboard, setShowAdminDashboard] = useState(false);
+  const { user, logout, isAuthenticated } = useAuth();
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
@@ -75,6 +83,36 @@ const Portfolio = () => {
               ))}
             </div>
 
+            {/* Auth Button */}
+            <div className="hidden md:flex items-center space-x-4">
+              {isAuthenticated ? (
+                <div className="flex items-center space-x-4">
+                  <span className="text-gray-600">Welcome, {user?.name || 'User'}</span>
+                  {user?.role === 'admin' && (
+                    <button
+                      onClick={() => setShowAdminDashboard(true)}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Admin Panel
+                    </button>
+                  )}
+                  <button
+                    onClick={logout}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setShowAuthModal(true)}
+                  className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                >
+                  Login
+                </button>
+              )}
+            </div>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -101,6 +139,45 @@ const Portfolio = () => {
                   {item.name}
                 </a>
               ))}
+
+              {/* Mobile Auth Button */}
+              <div className="pt-4 border-t border-gray-200">
+                {isAuthenticated ? (
+                  <div className="space-y-2">
+                    <span className="block text-gray-600">Welcome, {user?.name || 'User'}</span>
+                    {user?.role === 'admin' && (
+                      <button
+                        onClick={() => {
+                          setShowAdminDashboard(true);
+                          setIsMenuOpen(false);
+                        }}
+                        className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mb-2"
+                      >
+                        Admin Panel
+                      </button>
+                    )}
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setShowAuthModal(true);
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                  >
+                    Login
+                  </button>
+                )}
+              </div>
             </motion.div>
           )}
         </div>
@@ -844,6 +921,12 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <BlogSection />
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
+
       {/* Contact Section */}
       <section id="contact" className="py-32 px-6">
         <div className="max-w-4xl mx-auto">
@@ -1040,6 +1123,14 @@ const Portfolio = () => {
             </div>
           </motion.div>
         </motion.div>
+      )}
+
+      {/* Auth Modal */}
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+
+      {/* Admin Dashboard */}
+      {showAdminDashboard && (
+        <AdminDashboard onClose={() => setShowAdminDashboard(false)} />
       )}
     </div>
   );
