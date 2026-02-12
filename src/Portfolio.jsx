@@ -101,6 +101,7 @@ const Portfolio = () => {
                   {item.name}
                 </a>
               ))}
+
             </motion.div>
           )}
         </div>
@@ -1041,6 +1042,7 @@ const Portfolio = () => {
           </motion.div>
         </motion.div>
       )}
+
     </div>
   );
 };

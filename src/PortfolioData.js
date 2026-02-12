@@ -31,6 +31,34 @@ export const impactMetrics = [
 
 export const allProjects = [
   {
+    id: 11,
+    title: "Parjanya: Multi-Cloud AI Decision Support System",
+    role: "Lead AI Architect & System Designer",
+    impact: "500+ servers processed • Enterprise cloud migrations",
+    challenge: "Enterprise cloud migration decisions involve analyzing complex Bill of Materials (BoM) files from cloud cost exports, comparing hyperscalers (AWS, Azure, GCP), and making strategic recommendations worth millions of dollars. Traditional approaches relied on manual analysis taking weeks and prone to human error.",
+    solution: "Built Parjanya - a production-ready, AI-powered multi-cloud decision support platform using a sophisticated LangGraph multi-agent orchestration system. The platform implements a 'Private Perplexity' approach with curated hyperscaler intelligence and daily knowledge refresh from official sources only.",
+    metrics: [
+      "93% time reduction (2-3 weeks → 10-60 minutes)",
+      "99.7% decision accuracy with ETVX verification",
+      "5× processing speedup (83 min → 16.7 min for 500 servers)",
+      "$10M+ migration decisions supported",
+      "Real-time pricing across 3 hyperscalers simultaneously",
+      "Parallel batch processing with ThreadPoolExecutor",
+      "24-hour JWT sessions for long-running analysis"
+    ],
+    tech: ["LangGraph", "GPT-4", "Gemini Pro", "ChromaDB", "PostgreSQL", "Django REST", "Docker", "SSE", "Celery"],
+    color: "from-violet-500 to-fuchsia-500",
+    icon: Cloud,
+    highlights: [
+      "Four-Engine Architecture: Multi-Modal Ingestion → Commercial Calculator → OEM Program Brain (RAG) → Recommendation Engine",
+      "ETVX Verification Pattern: Entry-Task-Validation-Exit for complete auditability and trust in $10M+ decisions",
+      "LangGraph Orchestration: Complex stateful workflows enabling deterministic, auditable decision-making",
+      "Peer Verification: Independent AI cross-checking (GPT-4 + Gemini) for hallucination detection",
+      "Parallel Hyperscaler Processing: Simultaneous API calls across AWS/Azure/GCP for sub-second comparative analysis",
+      "Performance Optimization: 5× speedup through batch processing, extended timeouts, and SSE streaming"
+    ]
+  },
+  {
     id: 1,
     title: "AI-Powered Video Translation Platform",
     role: "ML Engineer & Technical Lead",
@@ -327,34 +355,6 @@ export const allProjects = [
     ],
     link: "https://github.com/surplussuman/Face-Fushion"
   },
-  {
-    id: 11,
-    title: "Parjanya: Multi-Cloud AI Decision Support System",
-    role: "Lead AI Architect & System Designer",
-    impact: "500+ servers processed • Enterprise cloud migrations",
-    challenge: "Enterprise cloud migration decisions involve analyzing complex Bill of Materials (BoM) files from cloud cost exports, comparing hyperscalers (AWS, Azure, GCP), and making strategic recommendations worth millions of dollars. Traditional approaches relied on manual analysis taking weeks and prone to human error.",
-    solution: "Built Parjanya - a production-ready, AI-powered multi-cloud decision support platform using a sophisticated LangGraph multi-agent orchestration system. The platform implements a 'Private Perplexity' approach with curated hyperscaler intelligence and daily knowledge refresh from official sources only.",
-    metrics: [
-      "93% time reduction (2-3 weeks → 10-60 minutes)",
-      "99.7% decision accuracy with ETVX verification",
-      "5× processing speedup (83 min → 16.7 min for 500 servers)",
-      "$10M+ migration decisions supported",
-      "Real-time pricing across 3 hyperscalers simultaneously",
-      "Parallel batch processing with ThreadPoolExecutor",
-      "24-hour JWT sessions for long-running analysis"
-    ],
-    tech: ["LangGraph", "GPT-4", "Gemini Pro", "ChromaDB", "PostgreSQL", "Django REST", "Docker", "SSE", "Celery"],
-    color: "from-violet-500 to-fuchsia-500",
-    icon: Cloud,
-    highlights: [
-      "Four-Engine Architecture: Multi-Modal Ingestion → Commercial Calculator → OEM Program Brain (RAG) → Recommendation Engine",
-      "ETVX Verification Pattern: Entry-Task-Validation-Exit for complete auditability and trust in $10M+ decisions",
-      "LangGraph Orchestration: Complex stateful workflows enabling deterministic, auditable decision-making",
-      "Peer Verification: Independent AI cross-checking (GPT-4 + Gemini) for hallucination detection",
-      "Parallel Hyperscaler Processing: Simultaneous API calls across AWS/Azure/GCP for sub-second comparative analysis",
-      "Performance Optimization: 5× speedup through batch processing, extended timeouts, and SSE streaming"
-    ]
-  }
 ];
 
 export const experience = [
