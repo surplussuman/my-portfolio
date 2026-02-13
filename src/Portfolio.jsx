@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Menu, X, Mail, Linkedin, Github, ExternalLink, ChevronRight, 
@@ -28,6 +28,7 @@ const Portfolio = () => {
 
   const { user, isAuthenticated, logout } = useAuth();
   const { addToast } = useToast();
+  const navigate = useNavigate();
 
   // Intersection Observer for active section
   useEffect(() => {
@@ -553,7 +554,7 @@ const Portfolio = () => {
                       </button>
                     ) : (
                       <button 
-                        onClick={() => window.location.href = `/project/${project.id}`}
+                        onClick={() => navigate(`/project/${project.id}`)}
                         className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
                       >
                         View Full Details

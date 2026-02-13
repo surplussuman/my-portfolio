@@ -49,6 +49,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/project/9" element={<Project9 />} />
             <Route path="/project/10" element={<Project10 />} />
             <Route path="/project/11" element={<Project11 />} />
+            <Route path="*" element={<Portfolio />} />
           </Routes>
         </AuthProvider>
       </ToastProvider>
