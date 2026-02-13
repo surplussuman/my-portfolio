@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Users, Target, Code, Database, CheckCircle, TrendingUp, Monitor, Shield, Zap, BarChart3 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import PremiumModal from '../components/PremiumModal';
 
 const Project3 = () => {
+  const { isAuthenticated } = useAuth();
+  const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (!isAuthenticated) {
+      setIsPremiumModalOpen(true);
+    }
+  }, [isAuthenticated]);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-50">
+    <>
+      <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-slate-50 ${!isAuthenticated ? 'blur-sm pointer-events-none' : ''}`}>
       {/* Header */}
       <div className="bg-white/80 backdrop-blur-lg border-b border-purple-100 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
@@ -632,6 +641,11 @@ class SpatialAttention(nn.Module):
         </motion.div>
       </div>
     </div>
+    <PremiumModal 
+      isOpen={isPremiumModalOpen} 
+      onClose={() => setIsPremiumModalOpen(false)} 
+    />
+    </>
   );
 };
 
