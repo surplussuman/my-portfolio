@@ -6,20 +6,28 @@ import {
   MapPin, Phone, ChevronDown, Zap, Briefcase, Award, GraduationCap,
   Code2, Target, Users, TrendingUp, CheckCircle2, Globe, BookOpen,
   Trophy, Building2, Calendar, Star, BarChart3, Activity, Shield, Rocket,
-  FileText, Download, Eye
+  FileText, Download, Eye, LogOut, User
 } from 'lucide-react';
 import {
   navigation, impactMetrics, allProjects, experience, education,
   additionalCourses, awards, publications, skills, additionalSkills
 } from './PortfolioData';
+import SubscribePopup from './components/SubscribePopup';
+import PremiumModal from './components/PremiumModal';
+import { useAuth } from './context/AuthContext';
+import { useToast } from './components/ToastContainer';
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
+
+  const { user, isAuthenticated, logout } = useAuth();
+  const { addToast } = useToast();
 
   // Intersection Observer for active section
   useEffect(() => {
@@ -59,20 +67,57 @@ const Portfolio = () => {
             </motion.div>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`transition-all duration-300 ${
-                    activeSection === item.href.slice(1)
-                      ? 'text-purple-600 font-semibold'
-                      : 'text-gray-600 hover:text-purple-600'
-                  }`}
-                >
-                  {item.name}
-                </a>
+                item.isRoute ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="text-gray-600 hover:text-purple-600 transition-all duration-300 font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`transition-all duration-300 ${
+                      activeSection === item.href.slice(1)
+                        ? 'text-purple-600 font-semibold'
+                        : 'text-gray-600 hover:text-purple-600'
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3 ml-4">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg">
+                    <User size={16} className="text-purple-600" />
+                    <span className="text-gray-800 font-medium">
+                      {user?.first_name || user?.username || 'User'}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      logout();
+                      addToast('Successfully logged out', 'success');
+                    }}
+                    className="p-2 text-gray-600 hover:text-red-600 transition-colors"
+                    title="Logout"
+                  >
+                    <LogOut size={18} />
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="ml-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                >
+                  Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -92,16 +137,55 @@ const Portfolio = () => {
               className="md:hidden mt-4 pb-4 space-y-4"
             >
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block text-gray-600 hover:text-purple-600 transition-colors"
-                >
-                  {item.name}
-                </a>
+                item.isRoute ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-gray-600 hover:text-purple-600 transition-colors font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block text-gray-600 hover:text-purple-600 transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
-
+              {isAuthenticated ? (
+                <div className="border-t border-gray-200 pt-4 mt-4 space-y-3">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg">
+                    <User size={16} className="text-purple-600" />
+                    <span className="text-gray-800 font-medium">
+                      {user?.first_name || user?.username || 'User'}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsMenuOpen(false);
+                      addToast('Successfully logged out', 'success');
+                    }}
+                    className="w-full flex items-center gap-2 px-3 py-2 text-gray-600 hover:text-red-600 transition-colors"
+                  >
+                    <LogOut size={16} />
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-center hover:shadow-lg transition-all duration-300"
+                >
+                  Login
+                </Link>
+              )}
             </motion.div>
           )}
         </div>
@@ -468,13 +552,13 @@ const Portfolio = () => {
                         <ChevronRight size={16} />
                       </button>
                     ) : (
-                      <Link 
-                        to={`/project/${project.id}`}
+                      <button 
+                        onClick={() => window.location.href = `/project/${project.id}`}
                         className="mt-4 w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
                       >
                         View Full Details
                         <ChevronRight size={16} />
-                      </Link>
+                      </button>
                     )}
                   </div>
                 </motion.div>
@@ -909,7 +993,7 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="mb-4">© 2026 Suman Janarthanan. All rights reserved.</p>
           <p className="text-purple-100">
-            Built with React, Tailwind CSS, and Framer Motion
+            {/* Built with React, Tailwind CSS, and Framer Motion */}
           </p>
         </div>
       </footer>
@@ -1043,6 +1127,11 @@ const Portfolio = () => {
         </motion.div>
       )}
 
+      <SubscribePopup />
+      <PremiumModal
+        isOpen={isPremiumModalOpen}
+        onClose={() => setIsPremiumModalOpen(false)}
+      />
     </div>
   );
 };

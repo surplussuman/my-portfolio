@@ -16,6 +16,7 @@ export const navigation = [
   { name: 'Education', href: '#education' },
   { name: 'Awards', href: '#awards' },
   { name: 'Contact', href: '#contact' },
+  { name: 'Blog', href: '/blog', isRoute: true },
 ];
 
 export const impactMetrics = [
