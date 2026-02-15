@@ -12,11 +12,22 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-suman-portfolio-key-change-in-production-2026'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-suman-portfolio-key-change-in-production-2026')
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['18.205.239.99', 'www.sumanjanarthanan.tech', 'sumanjanarthanan.tech', 'localhost', '127.0.0.1']
+
+# Security settings for HTTPS
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -94,7 +105,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'https://www.sumanjanarthanan.tech',
+    'https://sumanjanarthanan.tech',
+    'http://localhost:5173',  # For development
+    'http://localhost:3000',  # For development
+]
 CORS_ALLOW_CREDENTIALS = True
 
 # REST Framework
