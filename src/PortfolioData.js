@@ -2,20 +2,20 @@
 import {
   Code2, Database, Brain, Cloud, Server, Cpu, Target, Users, TrendingUp,
   CheckCircle2, Globe, BookOpen, Trophy, Building2, Calendar, Star,
-  BarChart3, Activity, Shield, Zap, FileText, Award, GraduationCap, Rocket
+  BarChart3, Activity, Shield, Zap, FileText, Award, GraduationCap, Rocket,
+  Lock, Network, KeyRound
 } from 'lucide-react';
 
 export const navigation = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Impact', href: '#impact' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Resume', href: '#resume' },
-  { name: 'Education', href: '#education' },
-  { name: 'Awards', href: '#awards' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/', isRoute: true },
+  { name: 'About', href: '/about', isRoute: true },
+  { name: 'Experience', href: '/experience', isRoute: true },
+  { name: 'Projects', href: '/projects', isRoute: true },
+  { name: 'Skills', href: '/skills', isRoute: true },
+  { name: 'Education', href: '/education', isRoute: true },
+  { name: 'Research', href: '/awards', isRoute: true },
+  { name: 'Resume', href: '/resume', isRoute: true },
+  { name: 'Contact', href: '/contact', isRoute: true },
   { name: 'Blog', href: '/blog', isRoute: true },
 ];
 
@@ -31,6 +31,122 @@ export const impactMetrics = [
 ];
 
 export const allProjects = [
+  // ── T.I.M.E, Hyderabad (current) ──
+  {
+    id: 12,
+    title: "ARIA — Adaptive Resource Intelligence Analyst",
+    role: "Lead AI Architect",
+    impact: "Continuous, human-tutor-style mentoring at scale",
+    challenge: "Most 'AI tutors' are chatbots bolted onto a course — they answer questions but never build a real picture of how a student is actually doing over time: what they get wrong repeatedly, how their focus drifts across videos, or whether they're genuinely improving.",
+    solution: "Built ARIA, an AI mentor that ingests everything a student does — test attempts, question-level mistakes, video watch behavior, doubts asked — and continuously analyzes patterns (repeated error types, consistency, engagement trends) to generate a running, personalized improvement plan, closer to a human mentor than a chatbot.",
+    metrics: [
+      "Unified student profile spanning tests, videos, and doubts",
+      "Automatic detection of repeated mistake patterns to target weak areas",
+      "Continuously updated improvement plan, not a one-time report",
+      "Deployed as the primary AI mentor across the institution's learning platform"
+    ],
+    tech: ["GPT-4o", "LangGraph", "RAG", "PostgreSQL", "Vector DB", "Django REST", "Time-series Analysis"],
+    color: "from-fuchsia-500 to-purple-600",
+    icon: Brain,
+    highlights: [
+      "Behavioral Fusion: Combines test scores, video engagement signals, and doubt-asking patterns into one longitudinal student profile",
+      "Mistake Pattern Detection: Flags recurring error types (not just wrong answers) so remediation targets root causes",
+      "Adaptive Planning: Improvement plan updates continuously as new performance data arrives, rather than a static report",
+      "Designed to mirror how a human mentor reasons about a student — trajectory and consistency, not a single snapshot"
+    ]
+  },
+  {
+    id: 13,
+    title: "AI Mock Interview & Proctoring Suite",
+    role: "Lead AI Architect",
+    impact: "5,000+ interviews conducted • Live behavior analysis",
+    challenge: "Automated interview tools that only grade Q&A miss most of what actually matters in an interview — composure, engagement, and how a candidate performs under pressure, not just what they say.",
+    solution: "Built an AI interview platform that goes beyond question-answer scoring by continuously monitoring the candidate's live camera feed during the session — reading engagement and signs of nervousness — and combining that with response analysis to track candidate performance over time.",
+    metrics: [
+      "5,000+ AI-driven interviews conducted",
+      "Live webcam behavior analysis layered on top of Q&A scoring",
+      "Tracks candidate improvement across multiple sessions, not just a single score",
+      "Used as a recurring skill-building tool, not a one-off assessment"
+    ],
+    tech: ["GPT-4o", "Computer Vision", "OpenCV", "MediaPipe", "LangGraph", "Django REST", "PostgreSQL", "WebRTC"],
+    color: "from-blue-600 to-indigo-600",
+    icon: Users,
+    highlights: [
+      "Live Behavioral Signal Extraction: Real-time analysis of the candidate's camera feed for engagement and nervousness indicators during the interview itself",
+      "Longitudinal Scoring: Stores and trends candidate performance across sessions to show real skill growth, not just a pass/fail score",
+      "Combines classic Q&A evaluation with behavioral signals for a more holistic interview-readiness score",
+      "Built to run at institutional scale — thousands of concurrent mock interviews"
+    ]
+  },
+  {
+    id: 14,
+    title: "Lexio — Communication Improvement Platform",
+    role: "Lead AI Architect",
+    impact: "8-stage diagnostic • Personalized improvement plans",
+    challenge: "Most communication tools (like Grammarly) only correct writing after the fact. The institution needed something that diagnoses a learner's actual level across every communication skill — not just grammar — and builds a real improvement plan around it.",
+    solution: "Built Lexio around an 8-level assessment — Speaking, Writing, Vocabulary, Presentation, Grammar, Reading Comprehension, Listening, and Group Discussion (mock GD with AI peers) — that scores a learner across every dimension of communication and generates tailored material and tasks based on their specific level.",
+    metrics: [
+      "8 independent assessment modules, from speaking to group discussion",
+      "AI-simulated peer group discussions for realistic GD practice",
+      "Personalized material and task plans generated per learner from diagnostic scores",
+      "Assessment timings tuned per module (2–5 minutes) to keep completion high"
+    ],
+    tech: ["GPT-4o", "WhisperAI", "Speech Analysis", "NLP", "LangChain", "Django REST", "PostgreSQL"],
+    color: "from-teal-500 to-cyan-600",
+    icon: Globe,
+    highlights: [
+      "8-Level Diagnostic Engine: Speaking, Writing, Vocabulary, Presentation, Grammar, Reading Comprehension, Listening, Group Discussion — each independently scored",
+      "AI Group Discussion: Simulates a group discussion with AI peers to assess collaborative communication, not just solo responses",
+      "Goes beyond grammar correction — evaluates and improves the full range of communication skills",
+      "Generates a personalized study plan, material, and task list directly from a learner's diagnostic profile"
+    ]
+  },
+  {
+    id: 15,
+    title: "Social Trend & Content Generation Tool",
+    role: "AI Developer",
+    impact: "Built for the internal digital marketing team",
+    challenge: "The marketing team needed a faster way to stay on top of trending social content and competitor activity across platforms, then translate that into ready-to-use content — without manually researching each platform every day.",
+    solution: "Built an internal tool that collects current social media trends and pulls competitor activity across platforms, then generates platform-specific content drafts for Instagram, YouTube, and LinkedIn from that research.",
+    metrics: [
+      "Automated trend and competitor research across multiple platforms",
+      "Platform-specific content generation for Instagram, YouTube, and LinkedIn",
+      "Cut manual research and drafting time for the marketing team",
+      "In active use by the digital marketing team"
+    ],
+    tech: ["GPT-4o", "Web Scraping", "LangChain", "Social Media APIs", "Django REST"],
+    color: "from-orange-500 to-amber-500",
+    icon: TrendingUp,
+    highlights: [
+      "Trend Aggregation: Pulls current trending content and competitor activity across social platforms into one feed",
+      "Content Generation: Drafts platform-tuned content (tone, format, length) for Instagram, YouTube, and LinkedIn from the research",
+      "Reduced the marketing team's daily research-to-draft cycle from manual to largely automated"
+    ]
+  },
+  {
+    id: 16,
+    title: "Study Material Beautification Pipeline",
+    role: "AI Architect",
+    impact: "150+ page documents • Zero content loss",
+    challenge: "Legacy study material existed only as old, poorly formatted PDFs. Converting them to modern HTML is easy — the hard part is guaranteeing zero content loss (not even a missing dot) across 150+ page documents, while working within the small context windows of LLMs and keeping API costs down.",
+    solution: "Built a two-agent n8n pipeline — one agent performs the PDF-to-HTML conversion, a second independently reviews it against the source for fidelity. Solved the context-window limit by chunking each PDF into small sections processed sequentially to preserve document-wide context, and used batch processing to keep LLM costs well below a naive full-document approach.",
+    metrics: [
+      "Handles 150+ page PDFs without losing content fidelity",
+      "Two-agent architecture: conversion agent + independent review agent",
+      "Chunked, sequential processing to preserve context across long documents",
+      "Batch processing kept conversion cost well below per-page LLM calls"
+    ],
+    tech: ["n8n", "GPT-4o", "Agentic Workflows", "Batch Processing", "PDF Parsing", "HTML/CSS"],
+    color: "from-emerald-500 to-green-600",
+    icon: FileText,
+    highlights: [
+      "Dual-Agent Verification: A dedicated review agent checks the conversion agent's output against the source PDF, catching drift before publishing",
+      "Context-Window Workaround: Splits large PDFs into sequential chunks that preserve prior context, avoiding the truncation/quality loss typical of single-shot LLM conversion",
+      "Cost Control: Batch processing strategy reduced per-document LLM cost far below naive whole-document prompting",
+      "Zero-loss fidelity was the core requirement — verified dot-for-dot against the original source material"
+    ]
+  },
+  // ── DMX Tech Services (previous) ──
   {
     id: 11,
     title: "Parjanya: Multi-Cloud AI Decision Support System",
@@ -137,6 +253,7 @@ export const allProjects = [
       "Real-time leaderboards during competitions"
     ]
   },
+  /* Retired: duplicated by the new "AI Mock Interview & Proctoring Suite" (id 13) built at T.I.M.E.
   {
     id: 10,
     title: "AI Interview Platform",
@@ -164,6 +281,7 @@ export const allProjects = [
       "Proctoring: Facial recognition (98.2% accuracy), tab switching detection, audio analysis"
     ]
   },
+  */
   {
     id: 2,
     title: "Intelligent Document Analysis System",
@@ -360,9 +478,32 @@ export const allProjects = [
 
 export const experience = [
   {
+    company: "T.I.M.E (Triumphant Institute of Management Education)",
+    role: "Technical Lead — AI Architect & Cloud Infrastructure",
+    period: "Feb 2026 – Present",
+    location: "Hyderabad",
+    type: "Full-time",
+    highlights: [
+      "Serve as AI Architect across the organization's AI initiatives, designing and delivering production systems spanning adaptive learning, interview automation, and communication assessment",
+      "Architected ARIA (Adaptive Resource Intelligence Analyst) — an AI mentor that continuously analyzes test performance, video-watching behavior, doubt patterns, and recurring mistakes to build personalized improvement plans for students",
+      "Led development of an AI-proctored interview platform combining live webcam behavior analysis (engagement, nervousness) with adaptive question generation — 5,000+ interviews conducted to date",
+      "Built Lexio, an 8-stage communication assessment and improvement platform (Speaking, Writing, Vocabulary, Presentation, Grammar, Reading, Listening, Group Discussion) generating personalized plans from diagnostic results",
+      "Designed a two-agent n8n pipeline (task agent + review agent) converting 150+ page legacy PDF study material into pixel-faithful HTML, solving small-context-window limits via chunked, batched processing that also cut LLM costs",
+      "Own end-to-end AWS deployment architecture — WAF, IAM roles/policies, Security Groups & NSGs, VPC design, and Application/Network Load Balancers — plus zero-downtime CI/CD and full observability with Grafana + Prometheus, migrating off a previous provider plagued by crashes and load-balancer failures",
+      "Redesigned the release process so builds and deploys no longer require stopping production servers, eliminating recurring application downtime during peak usage",
+      "Built an internal social-listening and content-generation tool for the marketing team — tracks social trends and competitor activity, then drafts platform-specific content for Instagram, YouTube, and LinkedIn"
+    ],
+    achievements: [
+      "5,000+ AI-proctored interviews delivered",
+      "Zero-downtime CI/CD across all production deployments",
+      "Full AWS re-architecture: WAF, load balancing, monitoring stack",
+      "8-level communication assessment engine (Lexio) shipped end-to-end"
+    ]
+  },
+  {
     company: "DMX Tech Services Pvt Ltd",
     role: "AI Engineer & Technical Team Lead",
-    period: "Feb 2025 – Present",
+    period: "Feb 2025 – Jan 2026",
     location: "Bangalore",
     type: "Full-time",
     highlights: [
@@ -511,6 +652,13 @@ export const publications = [
     description: "Research paper on Brain-Machine Interface technologies and their applications in enhancing human-computer interaction capabilities",
     journal: "Published Research",
     year: "2024"
+  },
+  {
+    title: "CPU-Efficient Face Recognition for Low-Light, Long-Range Surveillance",
+    status: "draft",
+    description: "Ongoing research on detecting and recognizing faces reliably from standard surveillance footage — under low lighting and at elevated camera angles/heights — designed to run on CPU or minimal GPU hardware. Practical implementation is largely complete; the paper is currently being written.",
+    journal: "In Preparation",
+    year: "2026"
   }
 ];
 
@@ -544,8 +692,14 @@ export const skills = {
     { name: "Monaco Editor Integration", icon: Code2, level: 87 },
   ],
   "Cloud & DevOps": [
-    { name: "AWS (EC2, S3)", icon: Cloud, level: 86 },
+    { name: "AWS (EC2, S3, ALB/NLB)", icon: Cloud, level: 90 },
+    { name: "AWS WAF & Shield", icon: Shield, level: 88 },
+    { name: "IAM (Roles, Policies)", icon: KeyRound, level: 87 },
+    { name: "Security Groups / NSGs", icon: Lock, level: 88 },
+    { name: "Load Balancers (ALB/NLB)", icon: Network, level: 89 },
+    { name: "Network Firewalls & VPC Design", icon: Shield, level: 85 },
     { name: "Prometheus / Grafana", icon: BarChart3, level: 83 },
+    { name: "Zero-Downtime CI/CD", icon: Rocket, level: 88 },
     { name: "Linux / Ubuntu Administration", icon: Server, level: 88 },
     { name: "VPS Management", icon: Server, level: 90 },
     { name: "Port Forwarding / Networking", icon: Globe, level: 84 },
@@ -565,6 +719,9 @@ export const additionalSkills = [
   // Networking & Infrastructure
   "Sockets", "Embedded Systems", "Networking", "VPS Server", "Gunicorn",
   "Nginx", "EC2 Instance", "S3 Bucket", "Virtual Machines", "Port Forwarding",
+  "AWS WAF", "Application/Network Load Balancer", "IAM", "Security Groups",
+  "NSG (Network Security Groups)", "Network Firewalls", "VPC Design", "Route 53",
+  "Auto Scaling Groups", "CloudWatch", "Zero-Downtime Deployments",
   // Soft Skills
   "Market Research", "Communication", "Leadership", "Problem Solving",
   "Quick Learner", "Innovator", "Team Management", "Agile/Scrum",

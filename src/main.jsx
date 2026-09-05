@@ -4,7 +4,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './components/ToastContainer'
 import ProtectedRoute from './components/ProtectedRoute'
-import Portfolio from './Portfolio'
+import Home from './pages/Home'
+import About from './pages/About'
+import ExperiencePage from './pages/ExperiencePage'
+import ProjectsPage from './pages/ProjectsPage'
+import SkillsPage from './pages/SkillsPage'
+import ResumePage from './pages/ResumePage'
+import EducationPage from './pages/EducationPage'
+import AwardsPage from './pages/AwardsPage'
+import ContactPage from './pages/ContactPage'
 import Project1 from './pages/Project1'
 import Project2 from './pages/Project2'
 import Project3 from './pages/Project3'
@@ -14,8 +22,9 @@ import Project6 from './pages/Project6'
 import Project7 from './pages/Project7'
 import Project8 from './pages/Project8'
 import Project9 from './pages/Project9'
-import Project10 from './pages/Project10'
+// import Project10 from './pages/Project10' // retired: duplicated by the new AI Mock Interview & Proctoring Suite (id 13)
 import Project11 from './pages/Project11'
+import ProjectDetail from './pages/ProjectDetail'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import BlogList from './pages/BlogList'
@@ -30,7 +39,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ToastProvider>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Portfolio />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/resume" element={<ResumePage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/awards" element={<AwardsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/blog" element={<BlogList />} />
@@ -47,9 +64,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/project/7" element={<Project7 />} />
             <Route path="/project/8" element={<Project8 />} />
             <Route path="/project/9" element={<Project9 />} />
-            <Route path="/project/10" element={<Project10 />} />
+            {/* <Route path="/project/10" element={<Project10 />} /> retired: duplicated by the new AI Mock Interview & Proctoring Suite (id 13) */}
             <Route path="/project/11" element={<Project11 />} />
-            <Route path="*" element={<Portfolio />} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </AuthProvider>
       </ToastProvider>
