@@ -75,7 +75,7 @@ const ResumePage = () => {
 
                       <div className="flex flex-col gap-4 w-full md:w-auto">
                         <motion.a
-                          href="/Resume_new Jan 26.pdf"
+                          href="/Resume_new Sep 26.pdf"
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
@@ -87,7 +87,7 @@ const ResumePage = () => {
                         </motion.a>
 
                         <motion.a
-                          href="/Resume_new Jan 26.pdf"
+                          href="/Resume_new Sep 26.pdf"
                           download="Suman_Janarthanan_Resume.pdf"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
