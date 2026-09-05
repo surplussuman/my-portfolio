@@ -16,7 +16,12 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-suman-portfolio-key-change
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['18.205.239.99', 'www.sumanjanarthanan.tech', 'sumanjanarthanan.tech', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['103.65.21.191', 'www.sumanjanarthanan.tech', 'sumanjanarthanan.tech', 'localhost', '127.0.0.1']
+
+# Trust the X-Forwarded-Proto header set by nginx so Django knows the
+# original request was HTTPS (otherwise SECURE_SSL_REDIRECT below causes
+# a redirect loop when nginx proxies to gunicorn over plain HTTP).
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Security settings for HTTPS
 SECURE_SSL_REDIRECT = True
