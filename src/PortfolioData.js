@@ -550,7 +550,8 @@ export const education = [
   {
     institution: "IIT Guwahati",
     degree: "Credit Linked Program in Data Science",
-    period: "Expected Sep 2025",
+    period: "Mar 2026",
+    grade: "Grade: 70%",
     logo: GraduationCap,
     color: "from-blue-500 to-indigo-500",
     courses: ["Machine Learning", "Deep Learning", "Neural Networks", "Data Analysis", "AI Applications", "Statistical Methods"]
