@@ -41,7 +41,7 @@ const ResumePage = () => {
                             <FileText className="text-purple-600" size={32} />
                             <div>
                               <h3 className="text-lg font-bold text-gray-800">Suman Janarthanan</h3>
-                              <p className="text-gray-600">Researcher, AI Architect & Technical Lead</p>
+                              <p className="text-gray-600">Researcher, AI & Solution Architect, Cloud Lead</p>
                             </div>
                           </div>
 

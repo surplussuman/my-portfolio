@@ -28,10 +28,63 @@ export const impactMetrics = [
   { icon: BarChart3, label: "Cost Reduction", value: "98.3%", color: "from-pink-500 to-rose-500" },
   { icon: CheckCircle2, label: "OCR Accuracy", value: "98.7%", color: "from-teal-500 to-cyan-500" },
   { icon: Rocket, label: "Scalability", value: "50x", color: "from-violet-500 to-purple-500" },
+  { icon: Cloud, label: "Apps Migrated to AWS", value: "40+", color: "from-orange-500 to-amber-500" },
+  { icon: Database, label: "Tables Behind One Chat Agent", value: "100s", color: "from-sky-500 to-indigo-500" },
 ];
 
 export const allProjects = [
   // ── T.I.M.E, Hyderabad (current) ──
+  {
+    id: 17,
+    title: "Enterprise Conversational Data Agent",
+    role: "Lead AI Architect",
+    impact: "100s of tables • Lakhs of rows • Multiple databases • One chat interface",
+    challenge: "Business data lived across multiple databases and hundreds of tables, so even simple questions meant waiting on someone who knew the schema and could write the query. Most 'chat with your data' demos fall apart at this scale: the model picks the wrong table, invents columns, joins incorrectly, or takes too long to answer.",
+    solution: "Designed an agentic data layer that lets users query the website's data by simply chatting. The agent understands the schema across multiple integrated databases, routes each question to the right sources, generates and validates queries over lakhs of rows, and returns grounded answers with low latency and minimal deviation from the underlying data. AirLLM was used in selected places for efficient large-model inference.",
+    metrics: [
+      "100s of tables across multiple databases unified behind one conversational interface",
+      "Lakhs of rows queried in natural language, with low response latency",
+      "Grounded answers from real query results, minimizing deviation and hallucination",
+      "Agentic workflow: schema understanding, source routing, query generation, validation, answer synthesis"
+    ],
+    tech: ["Agentic AI", "LangGraph", "LLM Tool-Calling", "Text-to-SQL", "Multi-DB Integration", "AirLLM", "PostgreSQL", "Python"],
+    color: "from-sky-500 to-indigo-600",
+    icon: Database,
+    highlights: [
+      "Multi-Database Agent: One agent reasons over several databases at once and decides which tables and sources each question needs, rather than being hard-wired to a single schema",
+      "Schema-Aware Retrieval: With hundreds of tables, only the relevant slice of the schema is surfaced to the model per question. This keeps prompts small, latency low and table selection accurate",
+      "Low Deviation by Design: Answers come from executed queries over real data, not from model memory, with validation before results reach the user",
+      "Efficient Inference: AirLLM used in selected components to run larger models efficiently where cost and hardware mattered",
+      "Production Context: Runs on the AWS infrastructure I architect, so the AI layer and its cloud foundation are designed together"
+    ]
+  },
+  {
+    id: 18,
+    title: "AWS Migration & Cloud Operating Model",
+    role: "Solution Architect & Cloud Lead",
+    impact: "40+ applications migrated • Delivered solo • Team and ownership model established",
+    challenge: "The organization's flagship application, TIME SHP, and 40+ other applications were running on a provider plagued by crashes, outages and load-balancer failures. They needed a complete, low-risk move to AWS, with no dedicated cloud team to do it.",
+    solution: "Led the complete migration myself. I designed the target AWS architecture (VPC with private database networking, EC2 tiers across two Availability Zones, ALB with host-based routing, WAF, Global Accelerator, ACM/TLS) and moved the workloads using AWS Application Migration Service (MGN) and AWS Transform, with Amazon Bedrock assisting the migration work. After cutover, I defined the ownership model and now lead the AWS team that runs it.",
+    metrics: [
+      "TIME SHP (the main, large application) plus 40+ other applications migrated to AWS",
+      "Executed end-to-end by one engineer, with no external migration team",
+      "14 infrastructure domains inventoried and owned: networking, compute, security, traffic, runtime, data, monitoring, governance",
+      "5 responsibility groups with named owners and an incident-ownership matrix",
+      "Zero-downtime CI/CD and Grafana/Prometheus monitoring in place"
+    ],
+    tech: ["AWS MGN", "AWS Transform", "Amazon Bedrock", "VPC", "EC2", "ALB", "WAF", "Global Accelerator", "ACM", "IAM", "EventBridge Scheduler", "Route 53 / DNS", "PM2", "Nginx", "PostgreSQL", "Grafana", "Prometheus"],
+    color: "from-orange-500 to-amber-600",
+    icon: Cloud,
+    highlights: [
+      "Network Foundation: Dedicated VPC (10.0.0.0/16), application subnets across two Availability Zones, private database networking, tightly scoped Security Groups with restricted SSH/admin access",
+      "Public Traffic Layer: ALB with HTTPS and host-based routing, AWS WAF with rule tuning and rate limiting, Global Accelerator, and wildcard TLS managed in ACM",
+      "Shared Runtime for 40+ Apps: A MultiApp Nginx reverse proxy maps hostnames to local ports behind a single target group, so new apps go live without a new ALB target group each time",
+      "Operational Automation: EventBridge Scheduler for timed start/stop of instances with post-start verification of PM2 apps, database and monitoring recovery",
+      "Data and Observability: Private PostgreSQL server with backup and restore procedures, plus a dedicated monitoring instance with actionable alerts",
+      "Governance: Per-person IAM Identity Center access, least privilege by job role, no shared admin credentials, secrets kept out of shared documents",
+      "Operating Model: Five owner groups (Infrastructure & Networking, Application Runtime, Database & Data Protection, Monitoring & Reliability, Cloud Administration & Governance), each with an owner and a backup, and a primary/supporting owner for every incident type"
+    ]
+  },
   {
     id: 12,
     title: "ARIA — Adaptive Resource Intelligence Analyst",
@@ -479,11 +532,14 @@ export const allProjects = [
 export const experience = [
   {
     company: "T.I.M.E (Triumphant Institute of Management Education)",
-    role: "Technical Lead — AI Architect & Cloud Infrastructure",
+    role: "Technical Lead — AI Architect, Solution Architect & Cloud Lead",
     period: "Feb 2026 – Present",
     location: "Hyderabad",
     type: "Full-time",
     highlights: [
+      "Single-handedly migrated the flagship TIME SHP application and 40+ other applications to AWS using Application Migration Service (MGN), AWS Transform and Amazon Bedrock, with no external migration team",
+      "Lead the AWS team and designed its operating model: 14 infrastructure domains grouped into 5 owner groups (networking, runtime, database, monitoring, governance), each with an owner, a backup and a defined incident-ownership matrix",
+      "Designed a conversational data agent over multiple databases, hundreds of tables and lakhs of rows, answering questions through chat with low latency and minimal deviation from the source data (AirLLM used in selected components)",
       "Serve as AI Architect across the organization's AI initiatives, designing and delivering production systems spanning adaptive learning, interview automation, and communication assessment",
       "Architected ARIA (Adaptive Resource Intelligence Analyst) — an AI mentor that continuously analyzes test performance, video-watching behavior, doubt patterns, and recurring mistakes to build personalized improvement plans for students",
       "Led development of an AI-proctored interview platform combining live webcam behavior analysis (engagement, nervousness) with adaptive question generation — 5,000+ interviews conducted to date",
@@ -494,6 +550,9 @@ export const experience = [
       "Built an internal social-listening and content-generation tool for the marketing team — tracks social trends and competitor activity, then drafts platform-specific content for Instagram, YouTube, and LinkedIn"
     ],
     achievements: [
+      "40+ applications migrated to AWS, including TIME SHP, delivered solo",
+      "Cloud team led, with ownership and incident model defined from day one",
+      "Multi-database conversational data agent in production",
       "5,000+ AI-proctored interviews delivered",
       "Zero-downtime CI/CD across all production deployments",
       "Full AWS re-architecture: WAF, load balancing, monitoring stack",
@@ -674,6 +733,8 @@ export const skills = {
     { name: "Computer Vision (OpenCV/YOLO)", icon: Target, level: 90 },
     { name: "NLP & Transformers (HuggingFace)", icon: Brain, level: 91 },
     { name: "Agentic AI (AutoGen/CrewAI)", icon: Users, level: 85 },
+    { name: "Multi-DB Conversational Data Agents (Text-to-SQL)", icon: Database, level: 90 },
+    { name: "AirLLM (Efficient Large-Model Inference)", icon: Cpu, level: 80 },
   ],
   "Backend & Infrastructure": [
     { name: "Django REST Framework", icon: Server, level: 94 },
@@ -693,7 +754,10 @@ export const skills = {
     { name: "Monaco Editor Integration", icon: Code2, level: 87 },
   ],
   "Cloud & DevOps": [
-    { name: "AWS (EC2, S3, ALB/NLB)", icon: Cloud, level: 90 },
+    { name: "AWS Solution Architecture & Migration (MGN, Transform)", icon: Cloud, level: 90 },
+    { name: "AWS (EC2, S3, ALB/NLB, Global Accelerator, ACM)", icon: Cloud, level: 90 },
+    { name: "EventBridge Scheduler / Cloud Automation", icon: Zap, level: 85 },
+    { name: "Amazon Bedrock", icon: Brain, level: 82 },
     { name: "AWS WAF & Shield", icon: Shield, level: 88 },
     { name: "IAM (Roles, Policies)", icon: KeyRound, level: 87 },
     { name: "Security Groups / NSGs", icon: Lock, level: 88 },
@@ -720,6 +784,9 @@ export const additionalSkills = [
   // Networking & Infrastructure
   "Sockets", "Embedded Systems", "Networking", "VPS Server", "Gunicorn",
   "Nginx", "EC2 Instance", "S3 Bucket", "Virtual Machines", "Port Forwarding",
+  "AWS Application Migration Service (MGN)", "AWS Transform", "Amazon Bedrock", "AWS Global Accelerator",
+  "ACM", "EventBridge Scheduler", "IAM Identity Center", "Cloud Migration", "Solution Architecture",
+  "PM2", "Disaster Recovery / Backups", "Agentic AI", "Text-to-SQL", "AirLLM",
   "AWS WAF", "Application/Network Load Balancer", "IAM", "Security Groups",
   "NSG (Network Security Groups)", "Network Firewalls", "VPC Design", "Route 53",
   "Auto Scaling Groups", "CloudWatch", "Zero-Downtime Deployments",

@@ -8,7 +8,7 @@ const traits = [
   {
     icon: Compass,
     title: "Owns the Whole Stack",
-    description: "Comfortable being the one person who designs the AI system and the AWS infrastructure it runs on — I'd rather understand the full path than hand off at the boundary.",
+    description: "Comfortable being the one person who designs the AI system and the AWS infrastructure it runs on — I'd rather understand the full path than hand off at the boundary. That's how I ended up migrating 40+ apps to AWS and leading the team that runs them.",
   },
   {
     icon: Heart,
@@ -44,12 +44,13 @@ const Home = () => {
               </span>
             </h1>
             <h2 className="text-lg md:text-2xl text-gray-700 mb-4">
-              Researcher, AI Architect & Technical Lead
+              Researcher, AI Architect, Solution Architect & Cloud Lead
             </h2>
             <p className="text-sm md:text-base text-gray-600 max-w-2xl mb-5 leading-relaxed">
-              Currently <span className="font-semibold text-purple-600">AI Architect and Technical Lead</span> at T.I.M.E, Hyderabad,
-              building production AI systems end-to-end — from adaptive learning and AI-proctored interviews to the
-              <span className="font-semibold text-indigo-600"> AWS infrastructure</span> they run on. Author of published BMI research,
+              Currently <span className="font-semibold text-purple-600">AI Architect, Solution Architect and Technical Lead</span> at T.I.M.E, Hyderabad.
+              I design agentic AI systems, including a chat agent that answers questions over hundreds of tables and lakhs of rows across multiple databases,
+              and I led the solo migration of 40+ applications to
+              <span className="font-semibold text-indigo-600"> AWS</span>, where I now lead the cloud team. Author of published BMI research,
               currently writing a second paper on <span className="font-semibold text-pink-600">CPU-efficient face recognition</span> for
               low-light surveillance.
             </p>
@@ -107,7 +108,7 @@ const Home = () => {
               <motion.img
                 whileHover={{ scale: 1.02 }}
                 src="/image.png"
-                alt="Suman Janarthanan - AI Architect & Researcher"
+                alt="Suman Janarthanan - AI & Solution Architect, Researcher"
                 className="relative z-10 w-full h-auto object-cover shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] rounded-2xl"
               />
 

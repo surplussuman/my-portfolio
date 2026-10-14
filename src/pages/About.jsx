@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award, Rocket } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Rocket, Cloud } from 'lucide-react';
 import { impactMetrics } from '../PortfolioData';
 import PortfolioLayout from '../components/PortfolioLayout';
 
@@ -25,10 +25,16 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-base text-gray-700 leading-relaxed">
-                  I'm a researcher and AI architect with over 2 years of experience building production-grade
-                  AI systems. Currently a Technical Lead at T.I.M.E, Hyderabad, I design and ship AI products
-                  end-to-end — from adaptive learning and AI-proctored interviews to communication assessment
-                  platforms — and own the AWS architecture they run on.
+                  I'm a researcher, AI architect, solution architect and cloud engineer with over 2 years of experience building
+                  production-grade AI systems. Currently a Technical Lead at T.I.M.E, Hyderabad, I design and ship AI products
+                  end-to-end — from adaptive learning and AI-proctored interviews to a multi-database conversational data agent —
+                  and I own the AWS architecture they run on.
+                </p>
+                <p className="text-base text-gray-700 leading-relaxed">
+                  At T.I.M.E, I migrated the flagship TIME SHP application and 40+ other applications to AWS on my own, using Application Migration
+                  Service (MGN), AWS Transform and Amazon Bedrock. Once the move was done, I defined who owns what across the cloud estate, and I now lead the
+                  AWS team. I also designed an AI agent that lets people chat with data spread across multiple databases, hundreds of tables and lakhs of rows,
+                  with low latency and minimal deviation from the source data.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed">
                   Before this, I led a 10+ team cross-functional engineering org at DMX Tech Services, delivering
@@ -47,6 +53,7 @@ const About = () => {
                     { icon: GraduationCap, label: "IIT Guwahati (Data Science)" },
                     { icon: Award, label: "5+ National Awards" },
                     { icon: Rocket, label: "10+ Production Systems" },
+                    { icon: Cloud, label: "40+ Apps Migrated to AWS" },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -70,6 +77,7 @@ const About = () => {
                       { label: "Concurrent Users", value: "5,000+" },
                       { label: "System Uptime", value: "99.7%" },
                       { label: "Cost Savings", value: "85%-98%" },
+                      { label: "Apps Migrated to AWS", value: "40+" },
                     ].map((stat, index) => (
                       <div key={index} className="flex justify-between items-center border-b border-gray-100 pb-2 last:border-0">
                         <span className="text-gray-600">{stat.label}</span>
